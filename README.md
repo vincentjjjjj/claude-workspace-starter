@@ -21,7 +21,7 @@ Un workspace prêt à l'emploi pour transformer Claude (Code ou Cowork) en assis
 
 1. Clonez ce repo :
 ```bash
-git clone https://github.com/VOTRE-USERNAME/claude-workspace-starter.git
+git clone https://github.com/vincentjjjjj/claude-workspace-starter.git
 ```
 
 2. Ouvrez le dossier dans Claude Cowork (ou `cd` dedans avec Claude Code)

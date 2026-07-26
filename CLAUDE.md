@@ -55,7 +55,7 @@ Une fois confirmé, mets à jour le fichier et ajoute une entrée dans le HISTOR
 ├── INSTALLER.md                 # Module d'installation interactif
 ├── knowledge/                   # Base de connaissances GLOBALE
 │   ├── CLAUDE.md                # Règles du bibliothécaire
-│   ├── raw/                     # Vrac (articles, notes, PDF, documents externes). Point d'entrée unique
+│   ├── inputs/                     # Vrac (articles, notes, PDF, documents externes). Point d'entrée unique
 │   ├── wiki/                    # Version organisée, écrite par Claude
 │   └── outputs/                 # Synthèses et réponses générées par Claude
 ├── projects/
@@ -64,7 +64,7 @@ Une fois confirmé, mets à jour le fichier et ajoute une entrée dans le HISTOR
 │   │   ├── HISTORY.md
 │   │   └── knowledge/
 │   │       ├── CLAUDE.md
-│   │       ├── raw/
+│   │       ├── inputs/
 │   │       ├── wiki/
 │   │       └── outputs/
 │   ├── [projet-1]/              # Un dossier par projet actif
@@ -80,9 +80,9 @@ Une fois confirmé, mets à jour le fichier et ajoute une entrée dans le HISTOR
 | `CONTEXT.md` (racine) | Qui je suis, mes objectifs, mon profil global |
 | `HISTORY.md` (racine) | Journal transversal (pas lié à un projet spécifique) |
 | `knowledge/` (racine) | Savoirs transversaux (fiscalité, veille techno, notes générales) |
-| `knowledge/raw/` | Point d'entrée unique pour déposer documents et fichiers (global) |
+| `knowledge/inputs/` | Point d'entrée unique pour déposer documents et fichiers (global) |
 | `projects/<nom>/` | Un projet = son propre CONTEXT, HISTORY, knowledge |
-| `projects/<nom>/knowledge/raw/` | Point d'entrée pour les documents du projet |
+| `projects/<nom>/knowledge/inputs/` | Point d'entrée pour les documents du projet |
 | `projects/_template/` | Modèle copié pour chaque nouveau projet |
 | `.claude/skills/` | Skills (super-pouvoirs) |
 
@@ -145,7 +145,7 @@ Projet [nom] chargé.
 [Dernière entrée HISTORY.md du projet]
 
 **Base de connaissances**
-[Nombre de fichiers dans raw/, pages dans wiki/]
+[Nombre de fichiers dans inputs/, pages dans wiki/]
 
 Prêt à travailler sur [nom]. Que fait-on ?
 ```
@@ -255,14 +255,14 @@ Quand je dis "knowledge" ou "/knowledge" :
 1. Identifie la base concernée (knowledge/ racine ou projects/<nom>/knowledge/)
 2. Lis le CLAUDE.md de cette base pour les règles du bibliothécaire
 3. Exécute l'action demandée :
-   - "compile" : lis raw/, crée/mets à jour wiki/ avec index + pages par sujet
+   - "compile" : lis inputs/, crée/mets à jour wiki/ avec index + pages par sujet
    - Question directe : cherche dans wiki/, réponds en citant les sources, sauvegarde dans outputs/
 
 ---
 
 ## Notes importantes
 
-- Les fichiers de contexte doivent rester synthétiques. Si une section devient trop longue, crée un fichier dédié dans knowledge/raw/ (global ou projet)
+- Les fichiers de contexte doivent rester synthétiques. Si une section devient trop longue, crée un fichier dédié dans knowledge/inputs/ (global ou projet)
 - L'historique se construit naturellement, pas besoin de tout y mettre
 - Ne modifie jamais un fichier de contexte sans avoir présenté un plan et reçu validation
-- Pour déposer des documents externes : knowledge/raw/ (global) ou projects/<nom>/knowledge/raw/ (projet)
+- Pour déposer des documents externes : knowledge/inputs/ (global) ou projects/<nom>/knowledge/inputs/ (projet)

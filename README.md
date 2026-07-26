@@ -19,12 +19,12 @@ Un workspace prêt à l'emploi pour transformer Claude (Code ou Cowork) en assis
 
 ### Démarrage rapide
 
-1. Clonez ce repo :
+1. Clonez ce repo (remplacez `mon-assistant` par le nom de dossier que vous voulez) :
 ```bash
-git clone https://github.com/vincentjjjjj/claude-workspace-starter.git
+git clone https://github.com/vincentjjjjj/claude-workspace-starter.git mon-assistant
 ```
 
-2. Ouvrez le dossier dans Claude Cowork (ou `cd` dedans avec Claude Code)
+2. Ouvrez le dossier dans Claude Cowork (ou `cd mon-assistant` avec Claude Code)
 
 3. Dites à Claude :
 ```
@@ -32,6 +32,14 @@ Installe mon assistant en suivant le fichier INSTALLER.md
 ```
 
 4. Répondez aux 8 questions. Claude configure tout automatiquement.
+
+### Désinstallation
+
+Pour supprimer toutes les traces de l'IA et ne garder que vos documents (inputs/ et outputs/) :
+```
+/uninstall
+```
+Une double confirmation vous sera demandée avant toute suppression.
 
 ## Structure
 
@@ -43,7 +51,7 @@ Installe mon assistant en suivant le fichier INSTALLER.md
 ├── INSTALLER.md           # Installation interactive
 ├── knowledge/             # Base de connaissances globale
 │   ├── CLAUDE.md          # Règles du bibliothécaire
-│   ├── raw/               # Déposez vos fichiers ici
+│   ├── inputs/            # Déposez vos fichiers ici
 │   ├── wiki/              # Version organisée (markdown)
 │   └── outputs/           # Synthèses générées
 ├── projects/
@@ -63,6 +71,7 @@ Installe mon assistant en suivant le fichier INSTALLER.md
 | `update-context` | Mettre à jour le contexte après un changement |
 | `briefing` | Veille matinale personnalisée |
 | `knowledge compile` | Compiler la base de connaissances (global ou projet) |
+| `uninstall` | Supprimer toutes les traces de l'IA (garde inputs/ et outputs/) |
 
 ## Base de connaissances
 
@@ -73,11 +82,11 @@ Le système fonctionne à deux niveaux :
 **Par projet** (`projects/<nom>/knowledge/`) : connaissances spécifiques au projet
 
 Pour alimenter une base :
-1. Déposez vos fichiers dans `raw/` (Word, Excel, PDF, CSV, markdown, texte...)
+1. Déposez vos fichiers dans `inputs/` (Word, Excel, PDF, CSV, markdown, texte...)
 2. Dites `knowledge compile` (ou `knowledge compile <nom-projet>`)
 3. Claude lit tout, convertit en markdown optimisé, et organise dans `wiki/`
 
-Les fichiers originaux restent intacts dans `raw/`. Le `wiki/` est une version markdown pure, optimisée pour minimiser la consommation de tokens.
+Les fichiers originaux restent intacts dans `inputs/`. Le `wiki/` est une version markdown pure, optimisée pour minimiser la consommation de tokens.
 
 ## Pourquoi ce starter ?
 
@@ -91,7 +100,7 @@ Claude est puissant, mais sans contexte persistant il repart de zéro à chaque 
 ## Inspirations
 
 Ce projet fusionne deux approches complémentaires :
-- L'architecture base de connaissances (raw/wiki/outputs) de [Décuplez votre Claude](https://www.youtube.com/@yassine-sdiri)
+- L'architecture base de connaissances (inputs/wiki/outputs) de [Décuplez votre Claude](https://www.youtube.com/@yassine-sdiri)
 - Le système de contexte évolutif et commandes du [Jarvis Starter Kit](https://skool.com/intelligenceartificielle)
 
 ## Licence

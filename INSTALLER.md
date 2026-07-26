@@ -202,7 +202,7 @@ Une fois confirmé, crée toute l'arborescence du workspace.
 ### 4.2 : Base de connaissances globale
 
 Crée les dossiers :
-- knowledge/raw/
+- knowledge/inputs/
 - knowledge/wiki/
 - knowledge/outputs/
 
@@ -255,7 +255,7 @@ Pour la suite :
 4. Pour créer un nouveau projet : dites "new-project [nom]"
 5. Pour mettre à jour votre contexte : dites "update-context"
 6. Pour votre briefing matinal : dites "briefing"
-7. Pour compiler votre base de connaissances : déposez des fichiers dans knowledge/raw/ ou projects/[nom]/knowledge/raw/ puis dites "knowledge compile"
+7. Pour compiler votre base de connaissances : déposez des fichiers dans knowledge/inputs/ ou projects/[nom]/knowledge/inputs/ puis dites "knowledge compile"
 
 Je suis prêt. Que voulez-vous faire en premier ?
 ```

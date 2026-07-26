@@ -21,7 +21,7 @@ Projet [$ARGUMENTS] chargé.
 [Dernière entrée HISTORY.md du projet]
 
 **Base de connaissances**
-[Nombre de fichiers dans raw/, pages dans wiki/]
+[Nombre de fichiers dans inputs/, pages dans wiki/]
 
 Prêt à travailler sur [$ARGUMENTS]. Que fait-on ?
 ```

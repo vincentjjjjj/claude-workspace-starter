@@ -41,7 +41,7 @@ Quand je raconte un changement de ce type, dis :
 
 > "Je remarque que tu m'as parlé de [changement]. Veux-tu que je mette à jour [fichier concerné] pour qu'il reflète cette information ?"
 
-Une fois confirmé, mets à jour le fichier et ajoute une entrée dans le HISTORY.md concerné (global ou projet).
+Une fois confirmé, mets à jour le fichier et ajoute une entrée dans HISTORY.md.
 
 ---
 
@@ -50,40 +50,27 @@ Une fois confirmé, mets à jour le fichier et ajoute une entrée dans le HISTOR
 ```
 .
 ├── CLAUDE.md                    # Ce fichier (chargé à chaque session)
-├── CONTEXT.md                   # Mon profil personnel et professionnel global
-├── HISTORY.md                   # Journal global (décisions transverses, sessions)
+├── CONTEXT.md                   # Mon profil personnel et professionnel
+├── HISTORY.md                   # Journal des sessions et décisions
 ├── INSTALLER.md                 # Module d'installation interactif
-├── knowledge/                   # Base de connaissances GLOBALE
+├── knowledge/                   # Base de connaissances
 │   ├── CLAUDE.md                # Règles du bibliothécaire
-│   ├── inputs/                     # Vrac (articles, notes, PDF, documents externes). Point d'entrée unique
+│   ├── inputs/                  # Vrac (articles, notes, PDF, documents externes)
 │   ├── wiki/                    # Version organisée, écrite par Claude
 │   └── outputs/                 # Synthèses et réponses générées par Claude
-├── projects/
-│   ├── _template/               # Template pour créer un nouveau projet
-│   │   ├── CONTEXT.md
-│   │   ├── HISTORY.md
-│   │   └── knowledge/
-│   │       ├── CLAUDE.md
-│   │       ├── inputs/
-│   │       ├── wiki/
-│   │       └── outputs/
-│   ├── [projet-1]/              # Un dossier par projet actif
-│   ├── [projet-2]/
-│   └── ...
 └── .claude/
+    ├── commands/                # Slash commands
     └── skills/
         └── recherche-actualites/ # Skill veille personnalisée
 ```
 
 | Dossier | Rôle |
 |---------|------|
-| `CONTEXT.md` (racine) | Qui je suis, mes objectifs, mon profil global |
-| `HISTORY.md` (racine) | Journal transversal (pas lié à un projet spécifique) |
-| `knowledge/` (racine) | Savoirs transversaux (fiscalité, veille techno, notes générales) |
-| `knowledge/inputs/` | Point d'entrée unique pour déposer documents et fichiers (global) |
-| `projects/<nom>/` | Un projet = son propre CONTEXT, HISTORY, knowledge |
-| `projects/<nom>/knowledge/inputs/` | Point d'entrée pour les documents du projet |
-| `projects/_template/` | Modèle copié pour chaque nouveau projet |
+| `CONTEXT.md` | Qui je suis, mes objectifs, mon profil |
+| `HISTORY.md` | Journal chronologique des sessions et décisions |
+| `knowledge/inputs/` | Point d'entrée unique pour déposer documents et fichiers |
+| `knowledge/wiki/` | Base organisée en markdown par Claude |
+| `knowledge/outputs/` | Synthèses et réponses générées |
 | `.claude/skills/` | Skills (super-pouvoirs) |
 
 ---
@@ -97,8 +84,7 @@ Démarrer une nouvelle session avec contexte complet.
 Quand je dis "start" ou "/start" :
 
 1. Lis dans cet ordre : CLAUDE.md, CONTEXT.md, HISTORY.md
-2. Liste les projets actifs en lisant chaque projects/*/CONTEXT.md (ignore _template)
-3. Présente ce résumé :
+2. Présente ce résumé :
 
 ```
 Bonjour [Prénom], contexte chargé. Voici où on en est :
@@ -109,73 +95,16 @@ Bonjour [Prénom], contexte chargé. Voici où on en est :
 **Objectifs court terme**
 [Top 3]
 
-**Projets actifs**
-[Liste des projets avec statut résumé en 1 ligne chacun]
+**Projets en cours**
+[Liste des projets mentionnés dans CONTEXT.md]
 
 **Dernière session**
-[Résumé de la dernière entrée HISTORY.md global]
+[Résumé de la dernière entrée HISTORY.md]
 
 Que veux-tu faire aujourd'hui ?
 ```
 
 Ne lance aucune action, attends mes instructions.
-
----
-
-### /project <nom>
-
-Charger le contexte d'un projet spécifique pour travailler dessus.
-
-Quand je dis "project <nom>" ou "/project <nom>" :
-
-1. Vérifie que projects/<nom>/ existe
-2. Lis projects/<nom>/CONTEXT.md et projects/<nom>/HISTORY.md
-3. Présente ce résumé :
-
-```
-Projet [nom] chargé.
-
-**Objectif**
-[Objectif du projet]
-
-**État actuel**
-[Statut, avancement]
-
-**Dernière session**
-[Dernière entrée HISTORY.md du projet]
-
-**Base de connaissances**
-[Nombre de fichiers dans inputs/, pages dans wiki/]
-
-Prêt à travailler sur [nom]. Que fait-on ?
-```
-
-À partir de là, quand je pose des questions ou demande des recherches, cherche d'abord dans la base de connaissances du projet (projects/<nom>/knowledge/), puis dans la base globale (knowledge/) si nécessaire.
-
----
-
-### /new-project <nom>
-
-Créer un nouveau projet à partir du template.
-
-Quand je dis "new-project <nom>" ou "/new-project <nom>" :
-
-1. Copie le contenu de projects/_template/ dans projects/<nom>/
-2. Lance une mini-interview (5 questions max) :
-   - C'est quoi ce projet en une phrase ?
-   - Quel est l'objectif principal ?
-   - Quelle est la stack/les outils utilisés ? (si pertinent)
-   - Quel est l'état actuel ? (idée, en cours, maintenance)
-   - Deadline ou horizon de temps ?
-3. Remplis projects/<nom>/CONTEXT.md avec les réponses
-4. Ajoute la première entrée dans projects/<nom>/HISTORY.md
-5. Ajoute le projet dans la liste des projets actifs de CONTEXT.md (racine)
-6. Confirme :
-
-```
-Projet [nom] créé et configuré.
-Lance "/project [nom]" pour commencer à travailler dessus.
-```
 
 ---
 
@@ -190,15 +119,13 @@ Quand je dis "update-context" ou "/update-context" :
 On met à jour ton contexte. Réponds simplement :
 
 1. Qu'est-ce qui a changé depuis la dernière mise à jour ?
-2. C'est lié à un projet spécifique ou c'est global ?
-3. Des informations dans CONTEXT.md qui ne sont plus exactes ?
+2. Des informations dans CONTEXT.md qui ne sont plus exactes ?
 ```
 
-2. Identifie quels fichiers mettre à jour (global ou projet)
-3. Présente un plan clair avant d'écrire
-4. Attends validation
-5. Exécute les modifications
-6. Ajoute une entrée datée dans le HISTORY.md concerné (format ci-dessous)
+2. Présente un plan clair avant d'écrire
+3. Attends validation
+4. Exécute les modifications
+5. Ajoute une entrée datée dans HISTORY.md (format ci-dessous)
 
 Format HISTORY.md :
 ```
@@ -244,17 +171,14 @@ Maximum 1 page. Si rien de pertinent, le dire plutôt que remplir avec du bruit.
 
 ---
 
-### /knowledge <scope>
+### /knowledge
 
-Compiler ou interroger une base de connaissances.
-
-Scope : "global" (par défaut) ou le nom d'un projet.
+Compiler ou interroger la base de connaissances.
 
 Quand je dis "knowledge" ou "/knowledge" :
 
-1. Identifie la base concernée (knowledge/ racine ou projects/<nom>/knowledge/)
-2. Lis le CLAUDE.md de cette base pour les règles du bibliothécaire
-3. Exécute l'action demandée :
+1. Lis knowledge/CLAUDE.md pour les règles du bibliothécaire
+2. Exécute l'action demandée :
    - "compile" : lis inputs/, crée/mets à jour wiki/ avec index + pages par sujet
    - Question directe : cherche dans wiki/, réponds en citant les sources, sauvegarde dans outputs/
 
@@ -262,7 +186,7 @@ Quand je dis "knowledge" ou "/knowledge" :
 
 ## Notes importantes
 
-- Les fichiers de contexte doivent rester synthétiques. Si une section devient trop longue, crée un fichier dédié dans knowledge/inputs/ (global ou projet)
+- Les fichiers de contexte doivent rester synthétiques. Si une section devient trop longue, crée un fichier dédié dans knowledge/inputs/
 - L'historique se construit naturellement, pas besoin de tout y mettre
 - Ne modifie jamais un fichier de contexte sans avoir présenté un plan et reçu validation
-- Pour déposer des documents externes : knowledge/inputs/ (global) ou projects/<nom>/knowledge/inputs/ (projet)
+- Pour déposer des documents externes : knowledge/inputs/

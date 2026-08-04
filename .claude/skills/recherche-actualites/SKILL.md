@@ -15,9 +15,8 @@ Veille intelligente des actualités, filtrée selon le contexte personnel. L'obj
 
 Avant toute recherche, lire :
 
-1. CONTEXT.md (racine) : profil, objectifs, projets
-2. HISTORY.md (racine) : sessions récentes pour les sujets actifs
-3. Les CONTEXT.md des projets actifs (projects/*/CONTEXT.md, ignorer _template)
+1. CONTEXT.md : profil, objectifs, projets
+2. HISTORY.md : sessions récentes pour les sujets actifs
 
 Identifier le filtre de pertinence :
 - Profil dominant et activité principale

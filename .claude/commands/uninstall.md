@@ -7,27 +7,17 @@ Supprimer toutes les traces de l'IA du workspace. Ne conserve que les dossiers i
 Fichiers racine :
 - CLAUDE.md, CONTEXT.md, HISTORY.md, INSTALLER.md, README.md
 
-Base de connaissances globale :
-- knowledge/CLAUDE.md
-- knowledge/wiki/ (tout le contenu)
-
-Chaque projet (projects/*/) :
-- CONTEXT.md, HISTORY.md
+Base de connaissances :
 - knowledge/CLAUDE.md
 - knowledge/wiki/ (tout le contenu)
 
 Configuration Claude :
 - .claude/ (commandes et skills, tout le dossier)
 
-Template :
-- projects/_template/ (tout le dossier)
-
 ## Ce qui sera conservé
 
 - knowledge/inputs/ (tes documents déposés)
 - knowledge/outputs/ (les synthèses générées)
-- projects/*/knowledge/inputs/ (documents par projet)
-- projects/*/knowledge/outputs/ (synthèses par projet)
 
 ## Séquence
 
@@ -55,8 +45,6 @@ La réponse doit être exactement "SUPPRIMER MON ASSISTANT" (majuscules, sans gu
    - Supprime les fichiers racine (CLAUDE.md, CONTEXT.md, HISTORY.md, INSTALLER.md, README.md)
    - Supprime knowledge/CLAUDE.md
    - Supprime tout le contenu de knowledge/wiki/
-   - Pour chaque projet dans projects/ (sauf _template) : supprime CONTEXT.md, HISTORY.md, knowledge/CLAUDE.md, et tout knowledge/wiki/
-   - Supprime projects/_template/ entièrement
    - Supprime .claude/ entièrement
 
 5. Confirmation finale :
@@ -66,9 +54,6 @@ Désinstallation terminée.
 Fichiers conservés :
 - knowledge/inputs/ ([X] fichiers)
 - knowledge/outputs/ ([X] fichiers)
-[Pour chaque projet :]
-- projects/[nom]/knowledge/inputs/ ([X] fichiers)
-- projects/[nom]/knowledge/outputs/ ([X] fichiers)
 
 Toutes les traces de l'assistant ont été supprimées.
 ```

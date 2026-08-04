@@ -1,8 +1,8 @@
-# INSTALLER : Configuration de votre assistant multiprojets
+# INSTALLER : Configuration de votre assistant personnel
 
 Ce fichier s'adresse à Claude. Quand la personne te demande de suivre ce fichier, exécute les phases ci-dessous dans l'ordre.
 
-Ton objectif : interviewer l'utilisateur, remplir ses fichiers de contexte, et créer toute la structure de dossiers du workspace.
+Ton objectif : interviewer l'utilisateur, remplir ses fichiers de contexte, et configurer le workspace.
 
 ---
 
@@ -22,7 +22,7 @@ Ton objectif : interviewer l'utilisateur, remplir ses fichiers de contexte, et c
 Affiche ce message exact :
 
 ```
-Bonjour, je suis votre assistant personnel multiprojets.
+Bonjour, je suis votre assistant personnel.
 
 Je vais vous poser une série de questions pour bien vous connaitre, puis je configurerai votre workspace. Plus vos réponses sont précises, mieux je pourrai vous aider.
 
@@ -127,8 +127,6 @@ Sur quoi travaillez-vous en ce moment ? Listez vos projets ou chantiers actifs (
 Ça peut être : un projet pro, un side project, une formation, une recherche, une transition que vous préparez.
 ```
 
-Important : ces projets deviendront chacun un dossier dans projects/. Note bien les noms.
-
 ### Question 7 : Outils et préférences
 
 ```
@@ -168,94 +166,60 @@ Attends confirmation. Intègre les corrections si besoin.
 
 ---
 
-## Phase 4 : Création de la structure
+## Phase 4 : Écriture des fichiers
 
-Une fois confirmé, crée toute l'arborescence du workspace.
+Une fois confirmé, remplis les fichiers du workspace.
 
-### 4.1 : Fichiers racine
+### 4.1 : CONTEXT.md
 
-**CONTEXT.md** : Remplis toutes les sections avec les réponses détaillées :
+Remplis toutes les sections avec les réponses détaillées :
 - Qui je suis (prénom, ville, profil)
 - Ce que je fais (activité détaillée)
 - Mes objectifs court terme (liste)
 - Mes objectifs long terme (vision)
-- Mes projets en cours (liste avec statut)
+- Mes projets en cours (liste)
 - Mes outils et préférences
 - Notes importantes (vide initialement)
 
-**HISTORY.md** : Crée avec la première entrée :
+### 4.2 : HISTORY.md
+
+Crée avec la première entrée :
 ```
 ## [AAAA-MM-JJ]
 
 ### Installation initiale
-- Workspace multiprojets configuré pour [Prénom], basé(e) à [Ville]
+- Workspace configuré pour [Prénom], basé(e) à [Ville]
 - Profil : [profil]
 - Activité : [activité en une ligne]
 - Objectifs court terme : [synthèse]
 - Vision long terme : [synthèse]
-- Projets actifs au démarrage : [liste]
+- Projets en cours : [liste]
 - Domaine d'aide prioritaire : [domaine]
 ```
 
-**CLAUDE.md** : Remplace la section "Qui je suis" avec une présentation synthétique de 4-6 lignes.
+### 4.3 : CLAUDE.md
 
-### 4.2 : Base de connaissances globale
-
-Crée les dossiers :
-- knowledge/inputs/
-- knowledge/wiki/
-- knowledge/outputs/
-
-Le fichier knowledge/CLAUDE.md existe déjà (bibliothécaire).
-
-### 4.3 : Dossiers projets
-
-Pour CHAQUE projet mentionné à la Question 6, crée un dossier dans projects/ :
-
-1. Détermine un slug pour le nom du dossier (minuscules, tirets, pas d'accents)
-2. Copie la structure de projects/_template/
-3. Remplis projects/<slug>/CONTEXT.md avec une mini-description basée sur ce que l'utilisateur a dit
-4. Crée la première entrée dans projects/<slug>/HISTORY.md
-
-Pour chaque projet, le CONTEXT.md doit contenir :
-- Nom du projet
-- Description (ce que l'utilisateur a dit)
-- Objectif principal (déduit ou "à préciser")
-- Stack/outils (si mentionnés, sinon "à préciser")
-- Statut (déduit : idée, en cours, maintenance)
-- Prochaines étapes (vide, à remplir plus tard)
-
-### 4.4 : Skills
-
-Le dossier .claude/skills/recherche-actualites/ et son SKILL.md existent déjà.
+Remplace la section "Qui je suis" avec une présentation synthétique de 4-6 lignes.
 
 ---
 
 ## Phase 5 : Confirmation finale
 
-Annonce chaque écriture :
-
 ```
 Je finalise tout maintenant.
 
-Structure créée :
 - CLAUDE.md mis à jour ✓
 - CONTEXT.md créé ✓
 - HISTORY.md créé ✓
-- Base de connaissances globale (knowledge/) ✓
-[Pour chaque projet :]
-- Projet "[nom]" (projects/[slug]/) ✓
 
 Votre workspace est opérationnel.
 
 Pour la suite :
 1. Vérifiez CLAUDE.md et CONTEXT.md, dites-moi si quelque chose ne correspond pas
-2. Pour démarrer chaque session : dites "start"
-3. Pour travailler sur un projet : dites "project [nom]"
-4. Pour créer un nouveau projet : dites "new-project [nom]"
-5. Pour mettre à jour votre contexte : dites "update-context"
-6. Pour votre briefing matinal : dites "briefing"
-7. Pour compiler votre base de connaissances : déposez des fichiers dans knowledge/inputs/ ou projects/[nom]/knowledge/inputs/ puis dites "knowledge compile"
+2. Pour démarrer chaque session : dites "/start"
+3. Pour mettre à jour votre contexte : dites "/update-context"
+4. Pour votre briefing matinal : dites "/briefing"
+5. Pour compiler votre base de connaissances : déposez des fichiers dans knowledge/inputs/ puis dites "/knowledge compile"
 
 Je suis prêt. Que voulez-vous faire en premier ?
 ```
@@ -267,5 +231,3 @@ Je suis prêt. Que voulez-vous faire en premier ?
 - Si l'utilisateur veut sauter une question, propose une réponse par défaut
 - Reste patient, c'est peut-être sa première fois
 - Les informations supplémentaires hors questionnaire vont dans "Notes importantes" de CONTEXT.md
-- Ne crée jamais un projet sans avoir au moins un nom et une description d'une ligne
-- Si l'utilisateur mentionne plus de 5 projets, suggère de commencer par les 3-4 plus importants et d'ajouter les autres plus tard via /new-project

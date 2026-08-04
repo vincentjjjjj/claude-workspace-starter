@@ -9,15 +9,13 @@ Mettre à jour le contexte après une session importante ou un changement.
 On met à jour ton contexte. Réponds simplement :
 
 1. Qu'est-ce qui a changé depuis la dernière mise à jour ?
-2. C'est lié à un projet spécifique ou c'est global ?
-3. Des informations dans CONTEXT.md qui ne sont plus exactes ?
+2. Des informations dans CONTEXT.md qui ne sont plus exactes ?
 ```
 
-2. Identifie quels fichiers mettre à jour (global ou projet)
-3. Présente un plan clair avant d'écrire
-4. Attends validation
-5. Exécute les modifications
-6. Ajoute une entrée datée dans le HISTORY.md concerné :
+2. Présente un plan clair avant d'écrire
+3. Attends validation
+4. Exécute les modifications
+5. Ajoute une entrée datée dans HISTORY.md :
 
 ```
 ## [AAAA-MM-JJ]

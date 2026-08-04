@@ -5,8 +5,7 @@ Démarrer une nouvelle session avec contexte complet.
 ## Séquence
 
 1. Lis dans cet ordre : CLAUDE.md, CONTEXT.md, HISTORY.md
-2. Liste les projets actifs en lisant chaque projects/*/CONTEXT.md (ignore _template)
-3. Présente ce résumé :
+2. Présente ce résumé :
 
 ```
 Bonjour [Prénom], contexte chargé. Voici où on en est :
@@ -17,11 +16,11 @@ Bonjour [Prénom], contexte chargé. Voici où on en est :
 **Objectifs court terme**
 [Top 3]
 
-**Projets actifs**
-[Liste des projets avec statut résumé en 1 ligne chacun]
+**Projets en cours**
+[Liste des projets mentionnés dans CONTEXT.md]
 
 **Dernière session**
-[Résumé de la dernière entrée HISTORY.md global]
+[Résumé de la dernière entrée HISTORY.md]
 
 Que veux-tu faire aujourd'hui ?
 ```
@@ -30,5 +29,4 @@ Que veux-tu faire aujourd'hui ?
 
 - Ne lance aucune action, attends les instructions
 - Si des fichiers sont vides ou incomplets, signale-le et propose de les remplir
-- Si tu détectes une incohérence entre les fichiers, signale-le calmement
 - Français, tutoiement, pas de tirets longs

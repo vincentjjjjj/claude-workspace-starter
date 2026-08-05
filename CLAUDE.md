@@ -49,6 +49,7 @@ Une fois confirmé, mets à jour le fichier et ajoute une entrée dans HISTORY.m
 ├── inputs/                 # Vrac (articles, notes, PDF, documents externes)
 ├── wiki/                   # Base de connaissances organisée, écrite par Claude
 ├── outputs/                # Synthèses et réponses générées par Claude
+├── documents/              # Fichiers de travail actifs (Word, Excel, PowerPoint)
 └── .claude/
     ├── commands/           # Slash commands
     └── skills/
@@ -59,9 +60,10 @@ Une fois confirmé, mets à jour le fichier et ajoute une entrée dans HISTORY.m
 |---------|------|
 | `CONTEXT.md` | Mes projets, mes objectifs, l'état d'avancement de ce workspace |
 | `HISTORY.md` | Journal chronologique des sessions et décisions |
-| `inputs/` | Point d'entrée unique pour déposer documents et fichiers |
+| `inputs/` | Point d'entrée unique pour déposer documents et fichiers (lecture seule, archivé dans wiki/) |
 | `wiki/` | Base organisée en markdown, écrite par Claude |
 | `outputs/` | Synthèses et réponses générées |
+| `documents/` | Fichiers de travail actifs que je modifie ou qu'on modifie ensemble |
 | `.claude/skills/` | Skills (super-pouvoirs) |
 
 ---
@@ -98,6 +100,16 @@ L'objectif : une base 100% markdown, lisible nativement, minimum de tokens à ch
 - Concis et précis. Aucune invention
 - Tu n'écris jamais dans inputs/. Toi seul écris dans wiki/ et outputs/
 - Le plus récent en haut dans l'index
+
+---
+
+## Documents de travail (documents/)
+
+`documents/` est différent d'inputs/. C'est mon espace de travail actif : fichiers Word, Excel, PowerPoint sur lesquels je travaille en cours, que je veux que tu m'aides à créer, modifier ou faire évoluer.
+
+- Contrairement à inputs/, tu PEUX écrire et modifier des fichiers dans documents/, à ma demande
+- Ce n'est pas du vrac à archiver dans le wiki, ni matière à compiler via /input compile
+- Si je te demande de créer ou modifier un fichier Excel/Word/PowerPoint, c'est ici qu'il va, pas dans inputs/ ni outputs/
 
 ---
 
@@ -208,7 +220,7 @@ Quand je dis "input" ou "/input" :
 
 ### /uninstall
 
-Supprimer toutes les traces de l'IA du workspace. Voir .claude/commands/uninstall.md pour le détail. Ne conserve que inputs/ et outputs/.
+Supprimer toutes les traces de l'IA du workspace. Voir .claude/commands/uninstall.md pour le détail. Ne conserve que inputs/, outputs/ et documents/.
 
 ---
 

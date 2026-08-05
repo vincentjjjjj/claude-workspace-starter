@@ -1,6 +1,6 @@
 # /uninstall
 
-Supprimer toutes les traces de l'IA du workspace. Ne conserve que les dossiers inputs/ et outputs/ (tes documents et les synthèses générées).
+Supprimer toutes les traces de l'IA du workspace. Ne conserve que les dossiers inputs/, outputs/ et documents/ (tes documents et les synthèses générées).
 
 ## Ce qui sera supprimé
 
@@ -17,6 +17,7 @@ Configuration Claude :
 
 - inputs/ (tes documents déposés)
 - outputs/ (les synthèses générées)
+- documents/ (tes fichiers de travail actifs)
 
 ## Séquence
 
@@ -52,6 +53,7 @@ Désinstallation terminée.
 Fichiers conservés :
 - inputs/ ([X] fichiers)
 - outputs/ ([X] fichiers)
+- documents/ ([X] fichiers)
 
 Toutes les traces de l'assistant ont été supprimées.
 ```

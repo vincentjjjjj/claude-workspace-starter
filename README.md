@@ -31,7 +31,7 @@ Votre profil, votre style de communication et vos préférences générales n'on
 
 ### Désinstallation
 
-Pour supprimer toutes les traces de l'IA et ne garder que vos documents (inputs/ et outputs/) :
+Pour supprimer toutes les traces de l'IA et ne garder que vos documents (inputs/, outputs/ et documents/) :
 ```
 /uninstall
 ```
@@ -44,9 +44,10 @@ Une double confirmation vous sera demandée avant toute suppression.
 ├── CLAUDE.md              # Fondation (chargé à chaque session)
 ├── CONTEXT.md             # Vos projets et objectifs pour ce workspace
 ├── HISTORY.md             # Journal des sessions
-├── inputs/                # Déposez vos fichiers ici
+├── inputs/                # Déposez vos fichiers en vrac ici (lecture seule)
 ├── wiki/                  # Base de connaissances organisée (markdown)
 ├── outputs/               # Synthèses générées
+├── documents/             # Fichiers de travail actifs (Word, Excel, PowerPoint)
 └── .claude/
     ├── commands/          # Slash commands
     └── skills/            # Skills personnalisées
@@ -60,7 +61,7 @@ Une double confirmation vous sera demandée avant toute suppression.
 | `/update-context` | Mettre à jour le contexte après un changement |
 | `/briefing` | Veille matinale personnalisée |
 | `/input compile` | Compiler la base de connaissances |
-| `/uninstall` | Supprimer toutes les traces de l'IA (garde inputs/ et outputs/) |
+| `/uninstall` | Supprimer toutes les traces de l'IA (garde inputs/, outputs/ et documents/) |
 
 ## Base de connaissances
 
@@ -70,6 +71,10 @@ Pour alimenter votre base :
 3. Claude lit tout, convertit en markdown optimisé, et organise dans `wiki/`
 
 Les fichiers originaux restent intacts dans `inputs/`. Le `wiki/` est une version markdown pure, optimisée pour minimiser la consommation de tokens.
+
+## Documents de travail
+
+`documents/` est différent d'`inputs/` : c'est votre espace de travail actif. Déposez-y les fichiers Word, Excel, PowerPoint sur lesquels vous travaillez en ce moment. Contrairement à `inputs/`, Claude peut créer, modifier et faire évoluer ces fichiers directement, à votre demande. Ce n'est pas du vrac à archiver, ni matière à compiler dans le wiki.
 
 ## Pourquoi ce starter ?
 

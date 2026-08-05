@@ -15,14 +15,12 @@ Veille intelligente des actualités, filtrée selon le contexte personnel. L'obj
 
 Avant toute recherche, lire :
 
-1. CONTEXT.md : profil, objectifs, projets
+1. CONTEXT.md : projets et objectifs de ce workspace
 2. HISTORY.md : sessions récentes pour les sujets actifs
 
 Identifier le filtre de pertinence :
-- Profil dominant et activité principale
-- Objectifs court terme
-- Projets en cours (tous)
-- Domaine d'aide prioritaire
+- Projets en cours
+- Objectifs actuels
 
 ---
 

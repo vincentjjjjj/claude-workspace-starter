@@ -1,6 +1,6 @@
 # /update-context
 
-Mettre à jour le contexte après une session importante ou un changement.
+Mettre à jour le contexte après une session importante ou un changement. C'est aussi le mécanisme principal pour construire CONTEXT.md au fil du temps.
 
 ## Séquence
 
@@ -8,7 +8,7 @@ Mettre à jour le contexte après une session importante ou un changement.
 ```
 On met à jour ton contexte. Réponds simplement :
 
-1. Qu'est-ce qui a changé depuis la dernière mise à jour ?
+1. Qu'est-ce qui a changé ou qu'est-ce que je dois savoir ?
 2. Des informations dans CONTEXT.md qui ne sont plus exactes ?
 ```
 
